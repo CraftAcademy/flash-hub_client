@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styling/customize.css";
-import { Reveal, Card, Button, Grid, Label } from 'semantic-ui-react';
+import { Reveal, Card, Grid, Label } from 'semantic-ui-react';
 
 const Flashcard = (props) => {
   let flashcard = props.flashcard;
@@ -36,18 +36,6 @@ const Flashcard = (props) => {
               </Card>
             </Reveal.Content>
           </Reveal>
-        </Grid.Column>
-
-        <Grid.Column width={11}>
-          <Button className='update-button' onClick={props.updateStatus} id='red' style={{ width: 191, height: 50 }}>
-            Repeat, please
-          </Button>
-          <Button className='update-button' onClick={props.updateStatus} id='yellow' style={{ width: 191, height: 50 }}>
-            Needs more practice
-          </Button>
-          <Button className='update-button' onClick={props.updateStatus} id='green' style={{ width: 191, height: 50 }}>
-            I got this
-          </Button>
         </Grid.Column>
       </Grid>
     </>

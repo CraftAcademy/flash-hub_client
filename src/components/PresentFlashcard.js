@@ -3,7 +3,9 @@ import axios from "axios";
 import { updateFlashcardStatus } from "../modules/updateFlashcardStatus";
 import Flashcard from "./Flashcard";
 import { Container, Button, Grid } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import CategoryButtons from './CategoryButtons';
+import StatusButtons from './StatusButtons';
 
 
 export class PresentFlashcard extends Component {
@@ -49,7 +51,6 @@ export class PresentFlashcard extends Component {
     });
   };
 
-
   repeatCurrentDeck = () => {
     this.setState({
       activeFlashcard: 0,
@@ -92,6 +93,7 @@ export class PresentFlashcard extends Component {
     const flashcards = this.state.flashcards;
     let chooseDeckOption;
     let flashcardDisplay;
+    let renderStatusButtons;
 
     if (flashcards.length >= 1 && this.state.renderDeckOption !== true) {
       flashcardDisplay = (
@@ -103,6 +105,14 @@ export class PresentFlashcard extends Component {
         />
       );
     };
+
+    if (this.props.currentUser.isSignedIn === true) {
+      renderStatusButtons = (
+        <StatusButtons />
+      )
+    } else {
+      // Other buttons to shuffle though a deck
+    }
 
     if (this.state.renderDeckOption === true) {
       chooseDeckOption = (
@@ -134,6 +144,7 @@ export class PresentFlashcard extends Component {
       <>
         <Container>
           {flashcardDisplay}
+          {renderStatusButtons}
           {chooseDeckOption}
         </Container>
 
@@ -144,4 +155,10 @@ export class PresentFlashcard extends Component {
   }
 }
 
-export default PresentFlashcard
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  };
+};
+export default connect(mapStateToProps)(PresentFlashcard);
+
