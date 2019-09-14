@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Menu, Header } from 'semantic-ui-react';
+import { Menu, Header, Modal, Button } from 'semantic-ui-react';
 import '../styling/customize.css';
 import LoginForm from './LoginForm';
 import Logout from './Logout'
 import SignupForm from './SignupForm';
 import PresentSavedFlashcards from './PresentSavedFlashcards';
 import { connect } from 'react-redux';
-import { Modal, Button } from 'semantic-ui-react';
+
 
 class Navbar extends Component {
   state = {}
@@ -57,6 +57,13 @@ class Navbar extends Component {
           Flashcard Hub
         </Header>
         <Menu.Menu position='right'>
+          <Modal id='instructions' basic size='small' trigger={<Button basic id='info'>How This Works</Button>}>
+            <ul id='list'>
+              <li>Click Red button if you would like to save and see the flashcard after finishing the deck</li>
+              <li>You got this, but you feel that you need a bit more practice. No problem! Just click yellow!</li>
+              <li>Click green to continue learning!</li>
+            </ul>
+          </Modal>
           {loginActions}
           {logoutActions}
           {userSavedFlashcards}
