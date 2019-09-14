@@ -1,20 +1,39 @@
 @import url('https://fonts.googleapis.com/css?family=Lexend+Giga|Londrina+Shadow|&display=swap');
 
+/* Flashcard positioning */
+#flashcard-wrapper{
+  padding-top: 20px;
+  padding-left: 71px;
+}
+
 /* Status buttons */
 #red {
   background-color: #FCA17E;
   color: rgb(131, 75, 57);
+}
+#red:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #yellow{
   background-color: #FFF389;
   color: rgb(150, 136, 16);
 }
+#yellow:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 #green {
   background-color: #D1E687;
   color: rgb(125, 150, 37);
 }
+#green:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 
 /* Login and Signup Buttons */ 
 #login-button {
@@ -24,6 +43,18 @@
 }
 
 #login-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#logout-button {
+  background-color: rgb(255, 255, 255);
+  border: white;
+  color: rgb(231, 148, 114);
+  font-weight: bolder;
+}
+
+#logout-button:focus {
   outline: none !important;
   box-shadow: none !important;
 }
@@ -49,35 +80,102 @@
   box-shadow: none !important;
 }
 
+#my-flashcards-button {
+  background-color: rgb(255, 255, 255);
+  border: white;
+  color: rgb(231, 148, 114);
+}
+
+#my-flashcards-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* Category buttons */
-#ruby {
-  border: 2px solid rgb(201, 184, 29);
+.button-class{
   border-radius: 5px;
+}
+
+#ruby {
+  border: 2px solid rgb(228, 156, 24);
+  color: rgb(228, 156, 24);
   background-color: white;
-  color: rgb(201, 184, 29)
+}
+#ruby:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #javascript{  
-  border: 2px solid rgb(125, 150, 37);
-  border-radius: 5px;
+  border: 2px solid rgb(202, 98, 64);
+  color: rgb(202, 98, 64);
   background-color: white;
-  color: rgb(125, 150, 37);
+}
+#javascript:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #commands{
-  border: 2px solid rgb(131, 75, 57);
-  border-radius: 5px;
+  border: 2px solid rgb(125, 150, 37);
+  color: rgb(125, 150, 37);
   background-color: white;
-  color: rgb(131, 75, 57);
+}
+#commands:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #category-buttons{
   position: absolute;
+  margin-left: -30px;
   bottom: 0;
   width: 100%;
 }
 
-/* Header */ 
+
+/* Saved Flashcard */
+#change_collection{  
+  border: 2px solid rgb(228, 156, 24);
+  color:rgb(228, 156, 24);
+  background-color: white;
+}
+
+#previous_card{  
+  border: 2px solid rgb(226, 118, 75);
+  color:rgb(226, 118, 75);
+  background-color: white;
+}
+
+#next_card{  
+  border: 2px solid rgb(157, 187, 47);
+  color: rgb(125, 150, 37);
+  background-color: white;
+}
+
+#saved-flashcard-wrapper{
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
+#saved-flashcard-button-wrapper{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.saved-ribbon{
+  background-color: #FCA17E!important;
+  border-color: rgb(196, 121, 92)!important;
+  color: white!important;
+}
+
+.flashcard-ribbon{
+  background-color: rgb(191, 212, 113)!important;
+  border-color: rgb(126, 146, 55)!important;
+  color: rgb(125, 150, 37)!important;
+}
+
+/* Header & Footer */ 
 #header{
   margin-top: 2px;
   margin-left: 2rem;
@@ -85,6 +183,10 @@
   color: #E58869;
   letter-spacing: 2px;
   text-shadow: 2px 2px 2px rgba(206,196,177,0.54);
+}
+
+#footer{
+  margin-bottom: 0px;
 }
 
 /* Login Form  */
@@ -99,6 +201,7 @@
 #login-modal{
   align-items: center;
 }
+
 
 /* Modal  */
 #modal {

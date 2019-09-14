@@ -84,8 +84,8 @@ export class PresentFlashcard extends Component {
           activeFlashcard: this.state.activeFlashcard + 1
         })
       }
-    }
-  }
+    });
+  };
 
   render() {
     const flashcards = this.state.flashcards;
@@ -116,18 +116,21 @@ export class PresentFlashcard extends Component {
         <Container>
             <Grid id='repeat' centered columns={20}>
               <Grid.Column verticalAlign='middle' width={40} >
-                  <Button onClick={() => this.repeatCurrentDeck()} 
-                    style={{ width: 200, height: 40 }}
-                    id="repeat-deck"
-                    basic color='red'
-                  >
-                    Repeat
+                <Button 
+                  onClick={() => this.repeatCurrentDeck()} 
+                  style={{ width: 200, height: 40 }}
+                  id="repeat-deck"
+                  basic color='red'
+                >
+                  Repeat
                 </Button>
-                  <Button onClick={() => this.getNewDeck()} 
-                    style={{ width: 200, height: 40 }}
-                    id="get-new-deck"
-                    basic color='green'>
-                    New Deck
+                <Button 
+                  onClick={() => this.getNewDeck()} 
+                  style={{ width: 200, height: 40 }}
+                  id="get-new-deck"
+                  basic color='green'
+                >
+                  New Deck
                 </Button>
               </Grid.Column>
             </Grid>
@@ -148,13 +151,7 @@ export class PresentFlashcard extends Component {
           getCategoryDeck={this.getCategoryDeck} />
       </>
     )
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    currentUser: state.reduxTokenAuth.currentUser
   };
 };
-export default connect(mapStateToProps)(PresentFlashcard);
 
+export default PresentFlashcard;
