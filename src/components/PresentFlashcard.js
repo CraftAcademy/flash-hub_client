@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { updateFlashcardStatus } from "../modules/updateFlashcardStatus";
 import Flashcard from "./Flashcard";
 import { Container, Button, Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import CategoryButtons from './CategoryButtons';
-import StatusButtons from './StatusButtons';
+import ShuffleButton from './ShuffleButton';
 
 
 export class PresentFlashcard extends Component {
@@ -73,10 +72,9 @@ export class PresentFlashcard extends Component {
     });
   };
 
-  updateStatus = (event) => {
-    let status = event.target.id
-    let flashcardId = this.state.flashcards[this.state.activeFlashcard].id
-    updateFlashcardStatus(status, flashcardId).then(() => {
+  visitorGetNextCard = (event) => {
+    const flashcards = this.state.flashcards;
+    if (event.target.id == 'next-button') {
       if (this.state.activeFlashcard + 1 == 10) {
         this.setState({
           renderDeckOption: true
@@ -86,33 +84,31 @@ export class PresentFlashcard extends Component {
           activeFlashcard: this.state.activeFlashcard + 1
         })
       }
-    })
-  };
+    }
+  }
 
   render() {
     const flashcards = this.state.flashcards;
     let chooseDeckOption;
     let flashcardDisplay;
-    let renderStatusButtons;
+    let renderShuffleButton;
 
     if (flashcards.length >= 1 && this.state.renderDeckOption !== true) {
       flashcardDisplay = (
         <Flashcard
           flashcard={flashcards[this.state.activeFlashcard]}
           key={flashcards[this.state.activeFlashcard].id}
-          updateStatus={this.updateStatus}
+          nextCard={this.nextCard}
           currentDeckCategory={this.state.deckCategory}
         />
       );
     };
 
-    if (this.props.currentUser.isSignedIn === true) {
-      renderStatusButtons = (
-        <StatusButtons />
+    if (this.props.currentUser.isSignedIn === false) {
+      renderShuffleButton = (
+        <ShuffleButton />
       )
-    } else {
-      // Other buttons to shuffle though a deck
-    }
+    } 
 
     if (this.state.renderDeckOption === true) {
       chooseDeckOption = (
@@ -144,7 +140,7 @@ export class PresentFlashcard extends Component {
       <>
         <Container>
           {flashcardDisplay}
-          {renderStatusButtons}
+          {renderShuffleButton}
           {chooseDeckOption}
         </Container>
 

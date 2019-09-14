@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { updateFlashcardStatus } from "../modules/updateFlashcardStatus";
 import SavedFlashcard from './SavedFlashcard';
 import { connect } from 'react-redux';
 import AlertMessage from './AlertMessage';
+import StatusButtons from './StatusButtons';
 
 class PresentSavedFlashcards extends Component {
   state = {
@@ -42,6 +44,24 @@ class PresentSavedFlashcards extends Component {
     }
   };
 
+  updateStatus = (event) => {
+    let status = event.target.id
+    const savedFlashcards = this.state.savedFlashcards;
+    let savedFlashcardId = this.state.savedFlashcards[this.state.activeCard].id
+    updateFlashcardStatus(status, savedFlashcardId).then(() => {
+      if (this.state.activeCard == savedFlashcards.length - 1) {
+        this.setState({
+          renderDeckOption: true
+        })
+      } else {
+        this.setState({
+          activeCard: this.state.activeCard + 1
+        })
+      }
+    })
+  };
+  
+
   nextCard = (event) => {
     const savedFlashcards = this.state.savedFlashcards;
     if (event.target.id == 'next_card') {
@@ -70,18 +90,27 @@ class PresentSavedFlashcards extends Component {
   render() {
     const savedFlashcards = this.state.savedFlashcards;
     let savedFlashcardDisplay;
-
+    let updateFlashcardStatus;
     let flashMessage;
+    let renderStatusButtons;
 
     if (this.props.showFlash === true) {
       flashMessage = <AlertMessage />;
-    }
+    };
+
+    if (this.props.currentUser.isSignedIn === true) {
+      renderStatusButtons = (
+        <StatusButtons />
+      )
+    }; 
+
     if (savedFlashcards.length >= 1) {
       savedFlashcardDisplay = (
         <SavedFlashcard
           savedFlashcard={savedFlashcards[this.state.activeCard]}
           key={savedFlashcards[this.state.activeCard].id}
           nextCard={this.nextCard}
+          updateStatus={this.updateStatus}
           getOtherCollection={this.getSavedFlashcards}
           otherCollection={this.state.otherCollection}
         />
@@ -91,6 +120,7 @@ class PresentSavedFlashcards extends Component {
       <>
         {flashMessage}
         {savedFlashcardDisplay}
+        {updateFlashcardStatus}
       </>
     )
   }

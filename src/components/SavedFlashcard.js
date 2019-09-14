@@ -39,18 +39,7 @@ const SavedFlashcard = (props) => {
               </Reveal.Content>
             </Reveal>
           </Grid.Column>
-        <Grid>
-          {/* <Button className='update-button' onClick={props.updateStatus} id='red' style={{ width: 191, height: 50 }}>
-            Repeat again, please
-          </Button>
-          <Button className='update-button' onClick={props.updateStatus} id='yellow' style={{ width: 191, height: 50 }}>
-            Still needs practice
-          </Button>
-          <Button className='update-button' onClick={props.updateStatus} id='green' style={{ width: 191, height: 50 }}>
-            I got this now
-          </Button> */}
         </Grid>
-      </Grid>
       </Container>
       </>
     )
