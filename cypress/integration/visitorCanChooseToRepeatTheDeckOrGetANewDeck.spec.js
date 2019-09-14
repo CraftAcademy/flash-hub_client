@@ -27,7 +27,7 @@ describe('Visitor can choose to repeat the deck or get a new deck', () => {
   describe('Visitor can choose to get a new deck of cards after finishing a deck', () => {
     it('successfully', () => {
       for(let n = 0; n < 10; n ++){
-        cy.get('#green').click()
+        cy.get('#next-button').click()
         cy.wait(500)
       }
 
@@ -42,7 +42,7 @@ describe('Visitor can choose to repeat the deck or get a new deck', () => {
   describe('Visitor can choose to repeat the same deck after finishing it', () => {
     it('successfully', () => {
       for(let n = 0; n < 10; n ++){
-        cy.get('#green').click()
+        cy.get('#next-button').click()
         cy.wait(500)
       }
 

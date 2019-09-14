@@ -30,7 +30,6 @@ describe('Visitor can choose decks of a specific category', () => {
       status: 200
     });
 
-    
     cy.visit('http://localhost:3001');
   });
 
@@ -49,7 +48,7 @@ describe('Visitor can choose decks of a specific category', () => {
       cy.get('#ruby').click();
 
       for(let n = 0; n < 10; n ++){
-        cy.get('#green').click()
+        cy.get('#next-button').click()
         cy.wait(500)
       }
 
