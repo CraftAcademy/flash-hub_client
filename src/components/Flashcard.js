@@ -50,8 +50,6 @@ const Flashcard = (props) => {
             </Reveal.Content>
           </Reveal>
         </Grid.Column>
-<<<<<<< HEAD
-=======
 
         <Grid.Column width={11}>
           <Button 
@@ -79,7 +77,6 @@ const Flashcard = (props) => {
             I got this
           </Button>
         </Grid.Column>
->>>>>>> d8d725aa197c97b6f667161f109a8dfadbc24ace
       </Grid>
       </Container>
     </>

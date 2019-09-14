@@ -84,7 +84,7 @@ export class PresentFlashcard extends Component {
           activeFlashcard: this.state.activeFlashcard + 1
         })
       }
-    });
+    };
   };
 
   render() {
